@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useParams , useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import LoggedIn from "./LoggedIn"
 
 // const COHORT_NAME = '2301-FTB-PT-WEB-PT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/users/`;
 
 
-const AccountForm = ({ setToken, setUser }) => {
+const AccountForm = ({ setToken, setUser, token }) => {
     const params = useParams();
     const { actionType } = params
     const history = useHistory();
@@ -18,12 +19,14 @@ const AccountForm = ({ setToken, setUser }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         try {
             const response = await fetch(
                 BASE_URL + actionType, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
+
 
                 },
                 body: JSON.stringify({
@@ -52,9 +55,10 @@ const AccountForm = ({ setToken, setUser }) => {
                     });
                     const result = await response.json();
                     console.log(result);
+                    const confirmedUser = result?.data?.username
                     setPassword('');
                     setUsername('');
-                    setUser(result?.data?.username)
+                    setUser(confirmedUser)
                     history.push('/profile')
                     return result
                 } catch (err) {
@@ -64,6 +68,12 @@ const AccountForm = ({ setToken, setUser }) => {
             return result
         } catch (err) {
             console.error(err);
+        } finally {
+            if (token) {
+                setPassword('');
+                setUsername('');
+                return LoggedIn()
+            }
         }
     }
 

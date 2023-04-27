@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import {
     Posts,
-    AccountForm
+    AccountForm, 
+    Logout,
+    LoggedIn
 } from './components';
 
 
@@ -33,9 +35,10 @@ const App = () => {
             </Route>
             <Route path="/profile">
                 <h1>Profile</h1>
+                <Logout token={token} setToken={setToken} setUser={setUser}/>
             </Route>
             <Route path="/account/:actionType" >
-                <AccountForm setToken={setToken} token={token} setUser={setUser}/>
+                <AccountForm setToken={setToken} token={token} setUser={setUser} />
             </Route>
         </>
     )
