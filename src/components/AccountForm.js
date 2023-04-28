@@ -82,7 +82,7 @@ const AccountForm = ({ setToken, setUser, token }) => {
             <h1>{actionType === "register" ? "Sign Up" : "Log In"}</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">Username: </label>
                     <input
                         required
                         label="Username"
@@ -91,7 +91,7 @@ const AccountForm = ({ setToken, setUser, token }) => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Password: </label>
                     <input
                         required
                         label="Password"
