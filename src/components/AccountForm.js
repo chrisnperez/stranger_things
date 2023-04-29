@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import LoggedIn from "./LoggedIn"
 
-// const COHORT_NAME = '2301-FTB-PT-WEB-PT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/users/`;
 
 
@@ -26,8 +25,6 @@ const AccountForm = ({ setToken, setUser, token }) => {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-
-
                 },
                 body: JSON.stringify({
                     user: {

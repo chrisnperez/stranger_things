@@ -3,7 +3,8 @@ import { Route, Link } from 'react-router-dom';
 import {
     Posts,
     AccountForm,
-    Logout
+    Logout, 
+    MyData
 } from './components';
 
 
@@ -34,7 +35,10 @@ const App = () => {
                 <Posts token={token} user={user} postId={postId} setPostId={setPostId}/>
             </Route>
             <Route path="/profile">
-                <h1>Profile</h1>
+                {token ? <h1>My Profile</h1> :
+                <h1>Profile</h1> }
+                <hr></hr>
+                <MyData token={token}/>
                 <Logout token={token} setToken={setToken} setUser={setUser} />
             </Route>
             <Route path="/account/:actionType" >

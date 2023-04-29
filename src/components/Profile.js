@@ -1,10 +1,13 @@
 import react from "react";
 
 
+
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/users/`;
 
+const myData = ({ token }) => {
 
-const MyData = async (token) => {
+  const handleData = async (event) => {
+    event.preventDefault()
 
     try {
       const response = await fetch(`${BASE_URL}me`, {
@@ -21,4 +24,17 @@ const MyData = async (token) => {
     }
   }
 
-  export default MyData;
+  return (
+    <>
+    <h1>Messages</h1>
+    <hr></hr>
+    
+    </>
+  )
+
+
+}
+
+
+
+export default myData;
