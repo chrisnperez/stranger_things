@@ -3,11 +3,11 @@ import react, { useState } from "react";
 
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT`;
 
-const EditPost = ({ token, id, title, description, price , postsFetch }) => {
+const EditPost = ({ token, id, title, description, price, postsFetch }) => {
     const [display, setDisplay] = useState("none")
-    const [editTitle , setEditTitle] = useState(title);
-    const [editPrice , setEditPrice] = useState(price);
-    const [editDescription , setEditDescription] = useState(description);
+    const [editTitle, setEditTitle] = useState(title);
+    const [editPrice, setEditPrice] = useState(price);
+    const [editDescription, setEditDescription] = useState(description);
 
     const updatePost = async (event) => {
         event.preventDefault();
@@ -69,7 +69,8 @@ const EditPost = ({ token, id, title, description, price , postsFetch }) => {
             <button onClick={() => {
                 display === "none" ? setDisplay("block")
                     : setDisplay("none");
-            }}> Edit </button>
+            }}>{display === "none" ? "Edit"
+                    : "Cancel"}</button>
 
 
         </>

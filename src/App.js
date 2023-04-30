@@ -16,7 +16,7 @@ const App = () => {
     const [postId, setPostId] = useState(null);
     const [userData, setUserData] = useState(null);
     const [posts, setPosts] = useState([]);
-   
+
 
 
     useEffect(() => {
@@ -49,6 +49,7 @@ const App = () => {
         postsFetch();
     }, [token]);
 
+    console.log(posts)
 
     return (
         <>
@@ -69,9 +70,11 @@ const App = () => {
             <Route path="/profile">
                 {token ? <h1>My Profile</h1> :
                     <h1>Profile</h1>}
+                <Logout setToken={setToken} setUser={setUser} token={token} />
                 <hr></hr>
+
                 <MyData token={token} setPosts={setPosts} posts={posts} />
-                
+
             </Route>
             <Route path="/account/:actionType" >
                 <AccountForm setToken={setToken} token={token} setUser={setUser} />

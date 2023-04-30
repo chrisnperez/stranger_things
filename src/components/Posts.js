@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CreatePost from "./CreatePost"
 import EditPost from "./EditPost";
@@ -8,14 +8,38 @@ import Message from "./Message";
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT`;
 
 const Posts = ({ token, user, posts, postsFetch }) => {
-  
+    const [searchValue, setSearchValue] = useState('');
+    const [filteredPosts, setFilteredPosts] = useState(posts)
+
+    // const handleSearch = (event) => {
+    //     const subString = event.target.value;
+    //     setSearchValue(subString);
+
+    //     const filteredPosts = posts.filter(post => 
+    //         post.title.toLowerCase().includes(subString.toLowerCase().trim()) || 
+    //         post.description.toLowerCase().includes(subString.toLowerCase().trim())
+        
+    //     );
+    //     setFilteredPosts(filteredPosts);
+    // }
+
+
     return (
         <>
-            
+            {/* <div>
+                <h2>Search: </h2>
+                <input
+                    type="text"
+                    name="search"
+                    onChange={handleSearch}
+                    value={searchValue}
+                />
+            </div> */}
             <hr></hr>
             {token && <CreatePost token={token} user={user} postsFetch={postsFetch} />}
             <div>
                 {
+                    // change to filteredPosts 
                     posts
                         ? posts.map(
                             ({ _id, isAuthor, author, title, description, price, idx }) => (
@@ -41,7 +65,7 @@ const Posts = ({ token, user, posts, postsFetch }) => {
 
                                 </div>
                             )
-                        ) : <strong> ERROR </strong>
+                        ) : <strong> No Posts Found </strong>
                 }
             </div>
         </>
