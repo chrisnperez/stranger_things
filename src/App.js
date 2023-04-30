@@ -16,6 +16,13 @@ const App = () => {
     const [postId, setPostId] = useState(null);
     const [userData, setUserData] = useState(null);
     const [posts, setPosts] = useState([]);
+   
+
+
+    useEffect(() => {
+        console.log('TOKEN: ' + token);
+        console.log('USER: ' + user)
+    }, [token, user])
 
 
     const postsFetch = async () => {
@@ -43,12 +50,6 @@ const App = () => {
     }, [token]);
 
 
-
-    useEffect(() => {
-        console.log('TOKEN: ' + token);
-        console.log('USER: ' + user)
-    }, [token, user])
-
     return (
         <>
             <nav className='navBar'>
@@ -70,7 +71,7 @@ const App = () => {
                     <h1>Profile</h1>}
                 <hr></hr>
                 <MyData token={token} setPosts={setPosts} posts={posts} />
-                <Logout token={token} setToken={setToken} setUser={setUser} />
+                
             </Route>
             <Route path="/account/:actionType" >
                 <AccountForm setToken={setToken} token={token} setUser={setUser} />

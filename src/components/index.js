@@ -8,6 +8,7 @@ export { default as CreatePost} from "./CreatePost"
 export { default as EditPost } from "./EditPost"
 export { default as DeletePost } from "./Delete"
 export { default as Message } from "./Message"
+export { default as MyMessages } from "./MyMessages"
 
 
 

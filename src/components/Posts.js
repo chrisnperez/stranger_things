@@ -23,7 +23,7 @@ const Posts = ({ token, user, posts, postsFetch }) => {
                                     <h1>{title}</h1>
                                     <h4>Price: {price}</h4>
                                     <h4>Description: {description}</h4>
-                                    <h5> Seller: {author.username} </h5>
+                                    {(user === !user) && <h5> Seller: {author.username} </h5>}
                                     {!isAuthor && token && (
                                         <Message token={token} isAuthor={isAuthor} _id={_id} />
                                     )
