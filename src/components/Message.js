@@ -8,8 +8,6 @@ const Message = ({ token, _id }) => {
     const [message, setMessage] = useState('')
     const [display, setDisplay] = useState("none")
     const [messageId , setMessageID ] = useState("");
-    console.log(_id)
-    console.log(messageId)
     
     const postMessage = async (event) => {
         event.preventDefault();
@@ -28,8 +26,6 @@ const Message = ({ token, _id }) => {
                 })
             });
             const result = await response.json();
-            console.log(result);
-            console.log(message)
             return result
         } catch (err) {
             console.error(err);
