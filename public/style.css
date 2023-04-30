@@ -3,7 +3,110 @@ nav {
     flex-direction: row;
     width: 100vw;
     justify-content: space-around;
-    font-size: 1.1em;
+    font-size: 1.3em;
+    font-family: monospace
 }
 
+* {
+    background-color: #F6F1F1;
+}
 
+.postContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    border: solid black 1px;
+    font-family: monospace;
+    margin-bottom: 5px;
+}
+
+button {
+    font-family: monospace;
+
+}
+
+h1 {
+    font-family: monospace;
+}
+
+.sendButton {
+    width: 120px;
+    margin-bottom: 5px;
+}
+
+.messageButton {
+    display: flex;
+    justify-content: center;
+    width: 140px;
+}
+
+.createPostContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 130px;
+    gap: 10px;
+
+}
+
+.postForm {
+    display: flex;
+    width: 450px;
+    height: 125px;
+}
+
+.priceInput {
+    display: flex;
+    gap: 5px;
+
+}
+
+.postButton {
+    width: 110px;
+    margin-bottom: 5px;
+}
+
+.createPostButton {
+    margin-bottom: 5px;
+    width: 110px;
+}
+
+.myPostContainer {
+    display: flex;
+}
+
+.profileMessages {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+}
+
+.myMessages {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.messageContent {
+    display: flex;
+}
+
+.messageBorder {
+    border: solid black .2px;
+    padding-left: 10px;
+    margin-bottom: 2px;
+
+}
+
+.profileVerticalLine {
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.editButton {
+    width: 100px;
+    margin-bottom: 5px;
+}

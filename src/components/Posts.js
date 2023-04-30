@@ -11,22 +11,22 @@ const Posts = ({ token, user, posts, postsFetch }) => {
     const [searchValue, setSearchValue] = useState('');
     const [filteredPosts, setFilteredPosts] = useState(posts)
 
-    // const handleSearch = (event) => {
-    //     const subString = event.target.value;
-    //     setSearchValue(subString);
+    const handleSearch = (event) => {
+        const subString = event.target.value;
+        setSearchValue(subString);
 
-    //     const filteredPosts = posts.filter(post => 
-    //         post.title.toLowerCase().includes(subString.toLowerCase().trim()) || 
-    //         post.description.toLowerCase().includes(subString.toLowerCase().trim())
+        const filteredPosts = posts.filter(post => 
+            post.title.toLowerCase().includes(subString.toLowerCase().trim()) || 
+            post.description.toLowerCase().includes(subString.toLowerCase().trim())
         
-    //     );
-    //     setFilteredPosts(filteredPosts);
-    // }
+        );
+        setFilteredPosts(filteredPosts);
+    }
 
 
     return (
         <>
-            {/* <div>
+            <div>
                 <h2>Search: </h2>
                 <input
                     type="text"
@@ -34,8 +34,8 @@ const Posts = ({ token, user, posts, postsFetch }) => {
                     onChange={handleSearch}
                     value={searchValue}
                 />
-            </div> */}
-            <hr></hr>
+            </div>
+            <hr className="profileVerticalLine"></hr>
             {token && <CreatePost token={token} user={user} postsFetch={postsFetch} />}
             <div>
                 {
@@ -43,7 +43,7 @@ const Posts = ({ token, user, posts, postsFetch }) => {
                     posts
                         ? posts.map(
                             ({ _id, isAuthor, author, title, description, price, idx }) => (
-                                <div key={_id ?? idx}>
+                                <div className="postContainer" key={_id ?? idx}>
                                     <h1>{title}</h1>
                                     <h4>Price: {price}</h4>
                                     <h4>Description: {description}</h4>

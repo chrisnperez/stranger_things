@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import react, { Fragment, useEffect, useState } from "react";
 import Posts from "./Posts";
 
 
@@ -6,7 +6,6 @@ import Posts from "./Posts";
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/users/`;
 
 const MyData = ({ token, setPosts, user }) => {
-
   const [myInteractions, setMyInteractions] = useState([]);
   const [messages, setMessages] = useState([]);
 
@@ -43,29 +42,34 @@ const MyData = ({ token, setPosts, user }) => {
   return (
     <>
       <div>
+        <div className="profileMessages">
+          <h1>Message Center</h1>
+          {messages
+            ? messages.map(
+              ({ content, fromUser, post, _id, idx }) => (
+                <div className="messageBorder">
+                  <div className="myMessages" key={_id ?? idx}>
+                    <h3>{post.title}</h3>
+                    {(user === !user) ? <h4> To: {fromUser.username}</h4> : <h4> To: {post.author.username}</h4>}
+                  </div>
+                  <div className="messageContent">
+                    <p> Message: {content}</p>
+                  </div>
+                </div>
+              )
+            ) : <p> Login to see messages! </p>}
+        </div>
+
         <div className="profilePosts">
           <h1> My Posts </h1>
-          <div>
+          <div className="myPostContainer">
             {(token ? <Posts setPosts={setPosts} posts={myInteractions.posts} user={user} /> : "Login to see your posts!")}
           </div>
           <div>
 
-
           </div>
-          <h1>Message Center</h1>
-          <div>
-            {messages
-              ? messages.map(
-                ({ content, fromUser, post, _id, idx }) => (
-                  <div key={_id ?? idx}>
-                    <h3>Subject: {post.title}</h3>
-                    {(user === !user) ? <h4> To: {fromUser.username}</h4> : <h4> From: {fromUser.username}</h4>}
-                    <p> Message: {content}</p>
-                  </div>
-                )
-              ) : <strong> Error </strong>}
 
-          </div>
+
 
         </div>
 

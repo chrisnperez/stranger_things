@@ -66,7 +66,7 @@ const EditPost = ({ token, id, title, description, price, postsFetch }) => {
                 />
                 <button onClick={updatePost}>Submit</button>
             </div>
-            <button onClick={() => {
+            <button className="editButton" onClick={() => {
                 display === "none" ? setDisplay("block")
                     : setDisplay("none");
             }}>{display === "none" ? "Edit"

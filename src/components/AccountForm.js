@@ -76,6 +76,7 @@ const AccountForm = ({ setToken, setUser, token }) => {
 
     return (
         <>
+
             <h1>{actionType === "register" ? "Sign Up" : "Log In"}</h1>
             <form onSubmit={handleSubmit}>
                 <div>

@@ -7,11 +7,11 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/
 const Message = ({ token, _id }) => {
     const [message, setMessage] = useState('')
     const [display, setDisplay] = useState("none")
-    const [messageId , setMessageID ] = useState("");
-    
+    const [messageId, setMessageID] = useState("");
+
     const postMessage = async (event) => {
         event.preventDefault();
-        
+
         try {
             const response = await fetch(`${BASE_URL}/${messageId}/messages`, {
                 method: "POST",
@@ -36,28 +36,33 @@ const Message = ({ token, _id }) => {
         <>
             <div style={{ display: display }}>
                 <form onSubmit={postMessage}>
-                    <input
-                        required
-                        label="Message"
-                        value={message}
-                        onChange={event => setMessage(event.target.value)}
-                    />
-                    <button type="submit">Send Message</button>
+                    <div className="messageForm">
+                        <textarea
+                            type="textarea"
+                            required
+                            label="Message"
+                            value={message}
+                            onChange={event => setMessage(event.target.value)}
+                        />
+                    </div>
+
+                    <button className="sendButton" type="submit">Send Message</button>
                 </form>
 
             </div>
             <button
+                className="messageButton"
                 type="submit"
                 onClick={() => {
                     setMessageID(_id);
-                    
+
                     display === "none" ? setDisplay('block')
                         : setDisplay("none");
-                        
+
                 }}>{
                     display === "none" ? "Message User"
                         : "Cancel Message"
-                        
+
                 }</button>
 
         </>

@@ -2,10 +2,11 @@ import react, { useState } from "react";
 
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT`;
 
-const CreatePost = ({ token , postsFetch }) => {
-    const [title , setTitle] = useState('');
-    const [price , setPrice] = useState('');
-    const [description , setDescription] = useState('');
+const CreatePost = ({ token, postsFetch }) => {
+    const [display, setDisplay] = useState("none")
+    const [title, setTitle] = useState('');
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
 
 
     const handleSubmit = async (event) => {
@@ -39,33 +40,50 @@ const CreatePost = ({ token , postsFetch }) => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="title">Title: </label>
-                    <input
-                        required
-                        label="Title"
-                        value={title}
-                        onChange={event => setTitle(event.target.value)}
-                    />
-                </div>
-                <label htmlFor="description">Description: </label>
-                <input
-                    required
-                    label="Description"
-                    value={description}
-                    onChange={event => setDescription(event.target.value)}
-                />
-                <label htmlFor="price">Price: </label>
-                <input
-                    required
-                    label="Price"
-                    value={price}
-                    onChange={event => setPrice(event.target.value)}
-                />
-                <button type="submit">Add Post</button>
+            <div style={{ display: display }}>
 
-            </form>
+                <form
+                    className="createPostContainer"
+                    onSubmit={handleSubmit}>
+                    <div >
+                        <label htmlFor="title">Title: </label>
+                        <input
+                            required
+                            label="Title"
+                            value={title}
+                            onChange={event => setTitle(event.target.value)}
+                        />
+                    </div>
+                    <label htmlFor="description">Description: </label>
+                    <div>
+                        <textarea
+                            className="postForm"
+                            type="textarea"
+                            required
+                            label="Description"
+                            value={description}
+                            onChange={event => setDescription(event.target.value)}
+                        />
+                    </div>
+
+                    <div className="priceInput">
+                        <label htmlFor="price">Price: </label>
+                        <input
+                            required
+                            label="Price"
+                            value={price}
+                            onChange={event => setPrice(event.target.value)}
+                        />
+                    </div>
+                    <button className="postButton" type="submit">Post</button>
+                </form>
+            </div>
+            <button className="createPostButton" type="submit" onClick={() => {
+                display === "none" ? setDisplay('block')
+                    : setDisplay("none")
+            }}>{
+                    display === "none" ? "Create Post"
+                        : "Cancel Post"}</button>
 
         </>
     )

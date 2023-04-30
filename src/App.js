@@ -54,8 +54,8 @@ const App = () => {
     return (
         <>
             <nav className='navBar'>
-                <Link to="/">Home</Link> |
-                <Link to="/posts">Posts</Link> |
+                {/* <Link to="/">Home</Link> | */}
+                <Link to="/posts">Home</Link> |
                 <Link to="/profile">Profile</Link> |
                 <Link to="/account/login">Account</Link>
             </nav>
@@ -65,7 +65,7 @@ const App = () => {
             </Route>
             <Route path="/posts">
                 <h1> Posts </h1>
-                <Posts token={token} user={user} posts={posts} />
+                <Posts token={token} user={user} posts={posts} postsFetch={postsFetch}/>
             </Route>
             <Route path="/profile">
                 {token ? <h1>My Profile</h1> :
