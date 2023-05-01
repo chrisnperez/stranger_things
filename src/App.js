@@ -13,17 +13,10 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT`
 const App = () => {
     const [token, setToken] = useState(null);
     const [user, setUser] = useState(null);
-    const [postId, setPostId] = useState(null);
-    const [userData, setUserData] = useState(null);
     const [posts, setPosts] = useState([]);
 
-
-
     useEffect(() => {
-        console.log('TOKEN: ' + token);
-        console.log('USER: ' + user)
     }, [token, user])
-
 
     const postsFetch = async () => {
         try {
@@ -37,7 +30,6 @@ const App = () => {
             )
 
             const results = await response.json()
-            console.log(results.data.posts)
             if (results.error) throw new Error("SERVER ERROR: " + results.error.message);
             setPosts(results.data.posts);
         } catch (e) {
@@ -49,12 +41,9 @@ const App = () => {
         postsFetch();
     }, [token]);
 
-    console.log(posts)
-
     return (
         <>
             <nav className='navBar'>
-                {/* <Link to="/">Home</Link> | */}
                 <Link to="/posts">Home</Link> |
                 <Link to="/profile">Profile</Link> |
                 <Link to="/account/login">Account</Link>
@@ -65,14 +54,13 @@ const App = () => {
             </Route>
             <Route path="/posts">
                 <h1> Posts </h1>
-                <Posts token={token} user={user} posts={posts} postsFetch={postsFetch}/>
+                <Posts isProfile={false} token={token} user={user} posts={posts} postsFetch={postsFetch} />
             </Route>
             <Route path="/profile">
                 {token ? <h1>My Profile</h1> :
                     <h1>Profile</h1>}
                 <Logout setToken={setToken} setUser={setUser} token={token} />
                 <hr></hr>
-
                 <MyData token={token} setPosts={setPosts} posts={posts} />
 
             </Route>
@@ -82,7 +70,5 @@ const App = () => {
         </>
     )
 }
-
-
 
 export default App; 

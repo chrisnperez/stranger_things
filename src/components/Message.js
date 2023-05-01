@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-
 
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/posts`;
 
@@ -45,29 +43,21 @@ const Message = ({ token, _id }) => {
                             onChange={event => setMessage(event.target.value)}
                         />
                     </div>
-
                     <button className="sendButton" type="submit">Send Message</button>
                 </form>
-
             </div>
             <button
                 className="messageButton"
                 type="submit"
                 onClick={() => {
                     setMessageID(_id);
-
-                    display === "none" ? setDisplay('block')
-                        : setDisplay("none");
-
+                    display === "none" ? setDisplay('block') : setDisplay("none");
                 }}>{
-                    display === "none" ? "Message User"
-                        : "Cancel Message"
-
-                }</button>
-
+                    display === "none" ? "Message User" : "Cancel Message"
+                }
+            </button>
         </>
     )
-
 }
 
 export default Message;

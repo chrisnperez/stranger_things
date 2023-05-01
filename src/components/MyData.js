@@ -1,7 +1,5 @@
 import react, { Fragment, useEffect, useState } from "react";
-import Posts from "./Posts";
-
-
+import MyPosts from "./MyPosts";
 
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/users/`;
 
@@ -9,10 +7,7 @@ const MyData = ({ token, setPosts, user }) => {
   const [myInteractions, setMyInteractions] = useState([]);
   const [messages, setMessages] = useState([]);
 
-
   const handleData = async () => {
-
-
     try {
       const response = await fetch(`${BASE_URL}me`, {
         headers: {
@@ -21,11 +16,8 @@ const MyData = ({ token, setPosts, user }) => {
         },
       });
       const result = await response.json();
-      // console.log(result);
-      // console.log(result?.data?.messages);
       setMyInteractions(result?.data);
       setMessages(result?.data?.messages)
-
       return result
     } catch (err) {
       console.error(err);
@@ -35,9 +27,6 @@ const MyData = ({ token, setPosts, user }) => {
   useEffect(() => {
     handleData();
   }, [])
-
-  console.log(myInteractions)
-  console.log(messages)
 
   return (
     <>
@@ -57,32 +46,21 @@ const MyData = ({ token, setPosts, user }) => {
                   </div>
                 </div>
               )
-            ) : <p> Login to see messages! </p>}
+            ) : <p> Login to see messages! </p>
+          }
         </div>
-
         <div className="profilePosts">
           <h1> My Posts </h1>
           <div className="myPostContainer">
-            {(token ? <Posts setPosts={setPosts} posts={myInteractions.posts} user={user} /> : "Login to see your posts!")}
+            {(token ?
+              <MyPosts setPosts={setPosts} posts={myInteractions.posts} user={user} />
+              : "Login to see your posts!")}
           </div>
-          <div>
-
-          </div>
-
-
-
         </div>
-
-
-
       </div>
-
     </>
   )
-
-
 }
-
 
 
 export default MyData;

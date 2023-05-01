@@ -1,3 +1,1 @@
-import react from "react";
-
-
+// I tried refactoring but it got too overwhelming // 

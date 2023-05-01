@@ -50,6 +50,7 @@ h1 {
     justify-content: flex-start;
     width: 130px;
     gap: 10px;
+    font-family: monospace;
 
 }
 
@@ -109,4 +110,36 @@ h1 {
 .editButton {
     width: 100px;
     margin-bottom: 5px;
+}
+
+.searchContainer {
+    display: flex;
+    font-family: monospace;
+    align-items: center;
+}
+
+.searchInput {
+    width: 250px;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25vw;
+    font-family: monospace;
+}
+
+.profilePosts {
+    font-family: monospace;
+}
+
+.loggedInDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25vw;
+    font-family: monospace;
 }

@@ -2,7 +2,7 @@ import react from "react";
 
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT`;
 
-const DeletePost = ({ token , postsFetch , id }) => {
+const DeletePost = ({ token, postsFetch, id }) => {
 
     const handleDelete = async () => {
         try {
@@ -14,7 +14,6 @@ const DeletePost = ({ token , postsFetch , id }) => {
                 }
             });
             const result = await response.json();
-            console.log(result);
             await postsFetch()
             return result
         } catch (err) {
@@ -28,9 +27,6 @@ const DeletePost = ({ token , postsFetch , id }) => {
             <button onClick={handleDelete}>Delete</button>
         </div>
     )
-
 }
 
 export default DeletePost
-
-

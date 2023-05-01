@@ -3,7 +3,7 @@ import react, { useState } from "react";
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT`;
 
 const CreatePost = ({ token, postsFetch }) => {
-    const [display, setDisplay] = useState("none")
+    const [display, setDisplay] = useState("none");
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
@@ -84,7 +84,6 @@ const CreatePost = ({ token, postsFetch }) => {
             }}>{
                     display === "none" ? "Create Post"
                         : "Cancel Post"}</button>
-
         </>
     )
 }
