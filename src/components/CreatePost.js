@@ -32,6 +32,7 @@ const CreatePost = ({ token, postsFetch }) => {
             setTitle('');
             setPrice('');
             setDescription('');
+            setDisplay("none")
             await postsFetch(token);
             return result
         } catch (err) {

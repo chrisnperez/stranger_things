@@ -3,7 +3,7 @@ import EditPost from "./EditPost";
 import DeletePost from "./Delete"
 import Message from "./Message";
 
-const Posts = ({ token, user, posts, postsFetch }) => {
+const Posts = ({ token, user, postsFetch , posts }) => {
 
     return (
         <>

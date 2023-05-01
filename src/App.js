@@ -4,7 +4,8 @@ import {
     Posts,
     AccountForm,
     Logout,
-    MyData
+    MyData,
+    HomePage
 } from './components';
 
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT`;
@@ -44,17 +45,18 @@ const App = () => {
     return (
         <>
             <nav className='navBar'>
-                <Link to="/posts">Home</Link> |
+                <Link to="/">Home</Link> |
+                <Link to="/posts">Posts</Link> |
                 <Link to="/profile">Profile</Link> |
                 <Link to="/account/login">Account</Link>
             </nav>
 
             <Route exact path="/">
-                <h1>Home</h1>
+               <HomePage />
             </Route>
             <Route path="/posts">
                 <h1> Posts </h1>
-                <Posts isProfile={false} token={token} user={user} posts={posts} postsFetch={postsFetch} />
+                <Posts token={token} user={user} posts={posts} postsFetch={postsFetch} />
             </Route>
             <Route path="/profile">
                 {token ? <h1>My Profile</h1> :

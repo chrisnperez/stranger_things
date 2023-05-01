@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import CreatePost from "./CreatePost"
 import EditPost from "./EditPost";
 import DeletePost from "./Delete"
@@ -38,8 +37,8 @@ const Posts = ({ token, user, posts, postsFetch }) => {
             {token && <CreatePost token={token} user={user} postsFetch={postsFetch} />}
             <div>
                 {
-                    filteredPosts
-                        ? filteredPosts.map(
+                    posts
+                        ? posts.map(
                             ({ _id, isAuthor, author, title, description, price, idx }) => (
                                 <div className="postContainer" key={_id ?? idx}>
                                     <h1>{title}</h1>
@@ -58,7 +57,8 @@ const Posts = ({ token, user, posts, postsFetch }) => {
                                             price={price}
                                             id={_id}
                                             token={token}
-                                            postsFetch={postsFetch} />}
+                                            postsFetch={postsFetch} 
+                                            filteredPosts={filteredPosts}/>}
                                     {isAuthor && <DeletePost id={_id} token={token} postsFetch={postsFetch} />}
 
                                 </div>

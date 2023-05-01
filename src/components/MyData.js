@@ -1,4 +1,4 @@
-import react, { Fragment, useEffect, useState } from "react";
+import react, { useEffect, useState } from "react";
 import MyPosts from "./MyPosts";
 
 const BASE_URL = `https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT/users/`;
