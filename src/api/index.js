@@ -1,1 +1,1 @@
-// I tried refactoring but it got too overwhelming // 
+// API calls are in each component // 
